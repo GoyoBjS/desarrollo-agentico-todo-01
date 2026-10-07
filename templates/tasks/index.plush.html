@@ -1,9 +1,9 @@
 <h1>Tareas</h1>
 
-<form action="/tasks" method="POST" class="new-task">
+<form action="/tasks" method="POST" class="task-form">
   <input type="hidden" name="authenticity_token" value="<%= authenticity_token %>">
   <label for="task-title">Nueva tarea</label>
-  <div class="new-task-row">
+  <div class="task-form-row">
     <input
       id="task-title"
       type="text"
@@ -33,6 +33,7 @@
           <span class="task-status">Completada</span>
         <% } %>
         <div class="task-actions">
+          <a href="/tasks/<%= t.ID %>/edit" class="button">Editar</a>
           <form action="/tasks/<%= t.ID %>/toggle" method="POST">
             <input type="hidden" name="authenticity_token" value="<%= authenticity_token %>">
             <input type="hidden" name="_method" value="PUT">
